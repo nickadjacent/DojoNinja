@@ -1,0 +1,40 @@
+>>> from DojoNinjaApp.models import Dojo, Ninja
+>>> Dojo.objects.create(name = 'Beginner Dojo', city = 'Burbank', state = 'CA')
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name = 'Intermediate Dojo', city = 'Seattle', state = 'WA')
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name = 'Advanced Dojo', city = 'Costa Mesa', state = 'CA')
+<Dojo: Dojo object (3)>
+>>> c = Dojo.objects.get(id=1)
+>>> c.delete()
+(1, {'DojoNinjaApp.Ninja': 0, 'DojoNinjaApp.Dojo': 1})
+>>> c = Dojo.objects.get(id=2)
+>>> c.delete()
+(1, {'DojoNinjaApp.Ninja': 0, 'DojoNinjaApp.Dojo': 1})
+>>> c = Dojo.objects.get(id=3)
+>>> c.delete()
+(1, {'DojoNinjaApp.Ninja': 0, 'DojoNinjaApp.Dojo': 1})
+>>> Dojo.objects.all().values()
+<QuerySet []>
+>>> Dojo.objects.create(name = 'Beginner Dojo', city = 'Burbank', state = 'CA')
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name = 'Intermediate Dojo', city = 'Seattle', state = 'WA')
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name = 'Advanced Dojo', city = 'Costa Mesa', state = 'CA')
+<Dojo: Dojo object (6)>
+>>> ninja = Ninja.objects.create(first_name = 'Matthew', last_name = 'Johnson', dojo = Dojo.objects.get(id=4))
+>>> ninja = Ninja.objects.create(first_name = 'Mark', last_name = 'Hamilton', dojo = Dojo.objects.get(id=4))
+>>> ninja = Ninja.objects.create(first_name = 'Luke', last_name = 'Roberts', dojo = Dojo.objects.get(id=4))
+>>> ninja = Ninja.objects.create(first_name = 'John', last_name = 'Wayne', dojo = Dojo.objects.get(id=5))
+>>> ninja = Ninja.objects.create(first_name = 'Sam', last_name = 'Sousa', dojo = Dojo.objects.get(id=5))
+>>> ninja = Ninja.objects.create(first_name = 'Kobe', last_name = 'Bryant', dojo = Dojo.objects.get(id=5))
+>>> ninja = Ninja.objects.create(first_name = 'Saint', last_name = 'Nick', dojo = Dojo.objects.get(id=6))
+>>> ninja = Ninja.objects.create(first_name = 'Santa', last_name = 'Claus', dojo = Dojo.objects.get(id=6))
+>>> ninja = Ninja.objects.create(first_name = 'Kris', last_name = 'Kringle', dojo = Dojo.objects.get(id=6))
+>>> Ninja.objects.filter(dojo_id=4).values()
+>>> Ninja.objects.filter(dojo_id=6).values()
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object (6)>
+>>> from DojoNinjaApp.models import *
+>>> Dojo.objects.create(name = 'Black Belt Dojo', city = 'Ninja Town', state = 'CA', desc = 'Only form the best of coding ninja warriors.')
+<Dojo: Dojo object (7)>
